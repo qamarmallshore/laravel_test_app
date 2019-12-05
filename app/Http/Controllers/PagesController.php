@@ -39,13 +39,15 @@ class PagesController extends Controller
 
 	public function store() {
 
-		$student = new student();
+		// $student = new student();
 
-		$student->first_name = request('first_name');
+		// $student->first_name = request('first_name');
 
-		$student->last_name = request('last_name');
+		// $student->last_name = request('last_name');
 
-		$student->save();
+		// $student->save();
+
+		Student::create(request()->all());
 
 		return redirect('/students');
 	}
@@ -53,6 +55,10 @@ class PagesController extends Controller
 	public function show($id)
     {
         //
+
+        $student = Student::find($id);
+
+        return view('student.show', compact('student'));
 
 
     }
@@ -108,7 +114,7 @@ class PagesController extends Controller
         //
 
         Student::find($id)->delete();
-        
+
         return redirect('/students');
     }
 

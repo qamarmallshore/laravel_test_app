@@ -14,7 +14,12 @@
                 	
                 	@foreach ($students as $student)
 
-                		<li> {{ $student->first_name }} </li>
+                		<li style="font-size: 16px; font-weight: bold; color: #fff;"> 
+                			<a href="{{url('students')}}/{{ $student->id }}"> 
+
+                		{{ $student->first_name }} {{ $student->last_name }} 
+                	</a>
+                		</li>
 
                 	@endforeach
 
