@@ -37,7 +37,7 @@ class PagesController extends Controller
 		return view('student.create');
 	}
 
-	public function store() {
+	public function store(Request $request) {
 
 		// $student = new student();
 
@@ -47,6 +47,11 @@ class PagesController extends Controller
 
 		// $student->save();
 
+// dd(request()->all()); exit;
+		$attributes =  $this->validate($request,[
+			'first_name'=> ['required', 'min:5', 'max:255'],
+			'last_name'=> ['required', 'min:5', 'max:255']
+		]);
 		Student::create(request()->all());
 
 		return redirect('/students');
@@ -93,9 +98,13 @@ class PagesController extends Controller
 
         $student = Student::find($id);
 
+		$student->roll_no = request('roll_no');
+
 		$student->first_name = request('first_name');
 
 		$student->last_name = request('last_name');
+
+		$student->degree_title = request('degree_title');
 
 		$student->save();
 

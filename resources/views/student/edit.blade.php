@@ -35,10 +35,16 @@
 
              {{ method_field('PATCH') }}
              <div class="form-group">
+                <input type="text" name="roll_no" class="form-control" value="{{ $student->roll_no}}" />
+            </div> 
+            <div class="form-group">
                 <input type="text" name="first_name" class="form-control" value="{{ $student->first_name}}" />
             </div>
             <div class="form-group">
                 <input type="text" name="last_name" class="form-control"value="{{ $student->last_name}}" />
+            </div>
+            <div class="form-group">
+                <input type="text" name="degree_title" class="form-control"value="{{ $student->degree_title}}" />
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Update" />
